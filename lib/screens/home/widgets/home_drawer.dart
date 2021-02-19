@@ -10,8 +10,6 @@ class HomeDrawer extends StatefulWidget {
 }
 
 class _HomeDrawerState extends State<HomeDrawer> {
-  // final GoogleSignIn _googleSignIn = GoogleSignIn();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
   List menu = [
     {"name": "Profile", "icon": Icons.person, "route": "/Profile"},
@@ -21,15 +19,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
   ];
 
   Future<void> onLogout() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // await _auth.signOut().then((_) {
-    //   //try the following
-    //   _googleSignIn.signOut();
-    //   prefs.clear();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
 
     Navigator.pushNamedAndRemoveUntil(
         context, '/Landing', (Route<dynamic> route) => false);
-    // });
   }
 
   void redirect(String value) {

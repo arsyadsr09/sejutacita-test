@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:github_test/helpers/colors_custom.dart';
 import 'package:github_test/widgets/custom_text.dart';
 import './home_view_model.dart';
-import '../search/widgets/SearchBar.dart';
 import 'widgets/home_drawer.dart';
 
 class HomeView extends HomeViewModel {
@@ -34,7 +33,6 @@ class HomeView extends HomeViewModel {
   }
 
   Widget getScaffold(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -83,9 +81,8 @@ class HomeView extends HomeViewModel {
                         color: ColorsCustom.primary.withOpacity(0.07),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        onPressed: () => {
-                          Navigator.pushNamed(context, '/Search')
-                        },
+                        onPressed: () =>
+                            {Navigator.pushNamed(context, '/Search')},
                         child: Icon(
                           Icons.search,
                           color: ColorsCustom.primary,
@@ -118,10 +115,6 @@ class HomeView extends HomeViewModel {
             BottomNavigationBarItem(
               icon: new Icon(FontAwesomeIcons.infoCircle),
               label: '${children[1]['name']}',
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(FontAwesomeIcons.codeBranch),
-              label: '${children[2]['name']}',
             ),
           ],
         ));

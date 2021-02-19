@@ -3,7 +3,6 @@ import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:github_test/helpers/colors_custom.dart';
 import 'package:github_test/screens/feeds/feeds.dart';
 import 'package:github_test/screens/issues/issues.dart';
-import 'package:github_test/screens/pull_request/pull_request.dart';
 import './home.dart';
 
 abstract class HomeViewModel extends State<Home> {
@@ -29,14 +28,6 @@ abstract class HomeViewModel extends State<Home> {
       "selectedColor": ColorsCustom.primary,
       "background": ColorsCustom.bgSecondary
     },
-    {
-      "name": "Pull Request",
-      "page": PullRequest(),
-      "icon": Icons.dynamic_feed,
-      "unSelectedColor": ColorsCustom.darkSecondary,
-      "selectedColor": ColorsCustom.primary,
-      "background": ColorsCustom.bgSecondary
-    },
   ];
 
   void toggleDrawer() {
@@ -54,4 +45,5 @@ abstract class HomeViewModel extends State<Home> {
       currentIndex = index;
     });
   }
+
 }
