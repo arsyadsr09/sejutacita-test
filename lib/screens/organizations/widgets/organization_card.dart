@@ -3,9 +3,9 @@ import 'package:github_test/helpers/colors_custom.dart';
 import 'package:github_test/widgets/custom_text.dart';
 
 class OrganizationCard extends StatelessWidget {
-  final String title, id, detail;
+  final String title, imageUrl, detail;
 
-  OrganizationCard({this.title, this.id, this.detail});
+  OrganizationCard({this.title, this.imageUrl, this.detail});
 
   @override
   Widget build(BuildContext context) {
@@ -19,30 +19,26 @@ class OrganizationCard extends StatelessWidget {
             height: 50,
             child: CircleAvatar(
               backgroundColor: ColorsCustom.bgSecondary,
-              backgroundImage: NetworkImage(
-                  'https://avatars.githubusercontent.com/u/71265848?s=200&v=4'),
+              backgroundImage: NetworkImage('$imageUrl'),
             ),
           ),
           SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                "$title",
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-              CustomText(
-                "$id",
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-              SizedBox(height: 5),
-              CustomText(
-                "$detail",
-                fontSize: 14,
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  "$title",
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+                SizedBox(height: 5),
+                CustomText(
+                  "${detail != null ? detail : '-'}",
+                  fontSize: 14,
+                ),
+              ],
+            ),
           )
         ],
       ),
