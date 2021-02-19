@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:github_test/helpers/colors_custom.dart';
 import 'package:github_test/widgets/custom_text.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
-class Feed extends StatefulWidget {
-  @override
-  _FeedState createState() => _FeedState();
-}
+class Feed extends StatelessWidget {
+  final String imageUrl, actor, action, timestamp, repo;
 
-class _FeedState extends State<Feed> {
+  Feed({this.imageUrl, this.actor, this.timestamp, this.repo, this.action});
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -20,42 +21,49 @@ class _FeedState extends State<Feed> {
             height: 50,
             child: CircleAvatar(
               backgroundColor: ColorsCustom.bgSecondary,
-              backgroundImage: NetworkImage(
-                  'https://i.pinimg.com/originals/e3/c0/b5/e3c0b57e39b9038b5a33a28d7953f24d.jpg'),
+              backgroundImage: NetworkImage('$imageUrl'),
             ),
           ),
           SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: new TextSpan(
-                  text: 'mhaidarhanif ',
-                  style: TextStyle(color: Colors.white),
-                  children: <TextSpan>[
-                    new TextSpan(
-                        text: 'starred ',
-                        style: new TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: "magiclabs/magic.js")
-                  ],
-                ),
-              ),
-              SizedBox(height: 5),
-              Row(
-                children: [
-                  Icon(
-                    Icons.star,
-                    color: ColorsCustom.darkSecondary,
-                    size: 20,
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: new TextSpan(
+                    text: '$actor ',
+                    style: TextStyle(color: Colors.white),
+                    children: <TextSpan>[
+                      new TextSpan(
+                          text: '$action ',
+                          style: new TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: "$repo")
+                    ],
                   ),
-                  SizedBox(width: 5),
-                  CustomText(
-                    "Yesterday",
-                    fontSize: 12,
-                  )
-                ],
-              )
-            ],
+                ),
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Icon(
+                      action == 'added'
+                          ? Icons.add
+                          : action == 'created'
+                              ? Icons.book
+                              : action == 'forked'
+                                  ? FontAwesomeIcons.codeBranch
+                                  : Icons.star,
+                      color: ColorsCustom.darkSecondary,
+                      size: 20,
+                    ),
+                    SizedBox(width: 5),
+                    CustomText(
+                      "${timeago.format(DateTime.parse(timestamp))}",
+                      fontSize: 12,
+                    )
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),
