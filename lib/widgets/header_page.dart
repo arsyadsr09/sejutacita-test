@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:github_test/helpers/colors_custom.dart';
 import 'package:github_test/widgets/custom_text.dart';
 
 class HeaderPage extends StatelessWidget {
