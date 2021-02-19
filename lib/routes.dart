@@ -7,12 +7,10 @@ import 'screens/profile/profile.dart';
 import 'screens/repositories/repositories.dart';
 import 'screens/search/search.dart';
 import 'screens/organizations/organizations.dart';
-import 'screens/sign_in/sign_in.dart';
 
 final Map<String, WidgetBuilder> routes = {
   '/Home': (BuildContext context) => Home(),
   '/Landing': (BuildContext context) => Landing(),
-  '/SignIn': (BuildContext context) => SignIn(),
   '/Introduction': (BuildContext context) => Introduction(),
   '/Search': (BuildContext context) => Search(),
   '/Profile': (BuildContext context) => Profile(),

@@ -8,4 +8,6 @@ class ColorsCustom {
   static Color bgPrimary = Color(0xFF2D142C);
   static Color black = Color(0xFF2f3542);
   static Color yellow = Color(0xFFeccc68);
+  static Color green = Color(0xFF2ed573);
+  static Color red = Color(0xFFff4757);
 }
